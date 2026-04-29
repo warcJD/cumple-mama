@@ -99,9 +99,9 @@
   <p>Introduce tu código secreto:</p>
   <input type="text" id="codeInput" placeholder="dd/mm/yy">
   <br>
-  <button onclick="checkCode()">Abrir sorpresa</button>
+  <button onclick="checkCode(); toggleImagen();">Abrir sorpresa</button>
   <br><br>
-  <img src="imagen3.jpg">
+  <img id="miImagen" src="imagen3.jpg">
 
   <!-- Sorpresa -->
   <div id="surprise" class="hidden">
@@ -153,6 +153,18 @@
       }
     }
   </script>
+
+  <script>
+function toggleImagen() {
+  const img = document.getElementById("miImagen");
+
+  if (img.style.display === "hidden") {
+    img.style.display = "block";
+  } else {
+    img.style.display = "none";
+  }
+}
+</script>
 
 </body>
 </html>
