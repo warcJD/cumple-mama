@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cumpleaños 🎂</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #fff3f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #d63384;
+    }
+
+    .cake {
+      font-size: 100px;
+      margin: 20px 0;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background: #ff69b4;
+      color: white;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+      margin-top: 20px;
+    }
+
+    img {
+      width: 90%;
+      max-width: 300px;
+      border-radius: 15px;
+      margin-top: 10px;
+    }
+
+    .message {
+      font-size: 22px;
+      color: #333;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 Sorpresa 🎉</h1>
+
+  <div class="cake">🎂🕯️🕯️🕯️</div>
+
+  <p>Introduce tu código secreto:</p>
+  <input type="text" id="codeInput" placeholder="dd/mm/yy">
+  <br>
+  <button onclick="checkCode()">Abrir sorpresa</button>
+
+  <div id="surprise" class="hidden">
+    <img src="https://via.placeholder.com/300x200.png?text=Tibu-ron+Restaurante" alt="Restaurante">
+    <div class="message">
+      🎉 ¡¡Felicidades has sido invitada al Solraig Tibu-ron!! 🎉
+    </div>
+  </div>
+
+  <script>
+    function checkCode() {
+      const code = document.getElementById("codeInput").value;
+      if (code === "300471") {
+        document.getElementById("surprise").classList.remove("hidden");
+      } else {
+        alert("Código incorrecto 💔");
+      }
+    }
+  </script>
+
+</body>
+</html>
