@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Cumpleaños 🎂</title>
+
+  <!-- FAVICON 🎂 -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -57,33 +61,90 @@
       color: #333;
       margin-top: 15px;
     }
+
+    /* CONFETI */
+    #confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      animation: fall 3s linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <h1>🎉 Sorpresa 🎉</h1>
 
-  <div class="cake">🎂🕯️🕯️🕯️</div>
+  <div class="cake">🕯️🕯️🎂🕯️🕯️</div>
 
   <p>Introduce tu código secreto:</p>
   <input type="text" id="codeInput" placeholder="dd/mm/yy">
   <br>
   <button onclick="checkCode()">Abrir sorpresa</button>
 
+  <!-- Sorpresa -->
   <div id="surprise" class="hidden">
     <img src="https://via.placeholder.com/300x200.png?text=Tibu-ron+Restaurante" alt="Restaurante">
+    
     <div class="message">
       🎉 ¡¡Felicidades has sido invitada al Solraig Tibu-ron!! 🎉
     </div>
   </div>
 
+  <!-- Música -->
+  <audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+  <!-- Confeti -->
+  <div id="confetti-container"></div>
+
   <script>
     function checkCode() {
       const code = document.getElementById("codeInput").value;
-      if (code === "300471") {
+      const music = document.getElementById("music");
+
+      if (code === "30/04/71") {
         document.getElementById("surprise").classList.remove("hidden");
+        music.play();
+        launchConfetti();
       } else {
         alert("Código incorrecto 💔");
+      }
+    }
+
+    function launchConfetti() {
+      const container = document.getElementById("confetti-container");
+      const colors = ["#ff69b4", "#ff85c1", "#ffc0cb", "#ffb6c1"];
+
+      for (let i = 0; i < 80; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+
+        container.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 3000);
       }
     }
   </script>
